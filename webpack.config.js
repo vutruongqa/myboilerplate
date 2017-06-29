@@ -23,9 +23,16 @@ module.exports = {
     resolve:{
         root: __dirname,
         alias:{
-            Main: 'app/components/Main.jsx',
+            TodoApp: 'app/components/TodoApp.jsx',
+            TodoList: 'app/components/TodoList.jsx',
+            Todo: 'app/components/Todo.jsx',
+            Search:'app/components/Search.jsx',
             applicationStyles:'app/styles/app.scss'
         },
+        modulesDirectories:[
+          'node_modules',
+          './app/components'  
+        ],
         extensions:['','.js','.jsx']
     },
     module: {
