@@ -26,12 +26,14 @@ module.exports = {
             TodoApp: 'app/components/TodoApp.jsx',
             TodoList: 'app/components/TodoList.jsx',
             Todo: 'app/components/Todo.jsx',
-            Search:'app/components/Search.jsx',
+            TodoSearch:'app/components/TodoSearch.jsx',
+            AddTodo:'app/components/AddTodo.jsx',
             applicationStyles:'app/styles/app.scss'
         },
         modulesDirectories:[
           'node_modules',
-          './app/components'  
+          './app/components',
+          './app/api'
         ],
         extensions:['','.js','.jsx']
     },

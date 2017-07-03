@@ -5,7 +5,12 @@ var Todo = React.createClass({
         var {id, text, status} = this.props;
     
         return(
-            <div>{id}. {text}: {status}</div>
+            <div onClick={()=>{
+                    this.props.onToggle(id);   
+                }}>
+                <input type="checkbox" checked={status}/>
+                {text}
+            </div>
 
         );
     }

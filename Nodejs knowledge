@@ -168,5 +168,13 @@ add this to webpack.config.js
       ]  
     },
  
+ ---------------------------------
+ npm install node-uuid --save-dev
  
+ ----------------------------------
+ Saving todolist into local storage
+
+localStorage.setItem('searchText','dog');
+localStorage.getItem('searchText');
+localStorage.removeItem('searchText');
 
