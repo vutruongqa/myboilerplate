@@ -25,6 +25,7 @@
     "css-loader": "^0.23.1",
     "foundation-sites": "6.2.0",
     "jquery": "^2.2.1",
+    "moment": "^2.12.0",
     "node-sass": "^3.4.2",
     "node-uuid": "^1.4.8",
     "sass-loader": "^3.1.2",

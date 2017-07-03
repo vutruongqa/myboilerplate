@@ -178,3 +178,6 @@ localStorage.setItem('searchText','dog');
 localStorage.getItem('searchText');
 localStorage.removeItem('searchText');
 
+----------------------------------------------
+Install the library to process time
+npm install moment@2.12.0 --save-dev

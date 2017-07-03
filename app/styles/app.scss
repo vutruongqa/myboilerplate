@@ -5,7 +5,10 @@
 @import "foundation";
 @include foundation-everything;
 
-@import "components/todoapp"
+@import "components/todoapp";
+@import "components/page-title";
+@import "components/container";
+@import "components/todo";
     
 
 

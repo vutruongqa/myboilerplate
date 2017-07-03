@@ -4,6 +4,7 @@ var TodoList = require('TodoList');
 var AddTodo = require('AddTodo');
 var uuid = require('node-uuid');
 var TodoAPI = require('TodoAPI');
+var moment = require('moment');
 
 var TodoApp = React.createClass({
     getInitialState:function(){
@@ -25,7 +26,9 @@ var TodoApp = React.createClass({
                 {
                     id: uuid(),
                     text:text,
-                    status:false
+                    status:false,
+                    createdAt: moment().unix(),
+                    completedAt: undefined
                 }
             ]
         });
@@ -43,6 +46,7 @@ var TodoApp = React.createClass({
         var updatedTodos = this.state.todos.map((todo)=>{
             if(todo.id === id){
                 todo.status =! todo.status;
+                todo.completedAt = todo.status ? moment().unix(): undefined;
             }
            return todo; 
         });
@@ -57,12 +61,14 @@ var TodoApp = React.createClass({
         var filterTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
         return(
             <div>
+                <h1 className='page-title'>Todo App</h1>  
                 <div className="row">
-                    <div className="column small-centered medium-6 large-4">
-                                 <h1>Todo App</h1>       
-                        <TodoSearch onSearch={this.handleSearch}/>  
-                        <TodoList todos={filterTodos} onToggle={this.handleToggle} />   
-                        <AddTodo addTodo={this.handleAddTodo}  />    
+                    <div className="column small-centered small-11 medium-6 large-5"> 
+                       <div className="container">
+                           <TodoSearch onSearch={this.handleSearch}/>  
+                           <TodoList todos={filterTodos} onToggle={this.handleToggle} />   
+                           <AddTodo addTodo={this.handleAddTodo}  />   
+                       </div>      
                     </div>
                 </div>
             </div>
