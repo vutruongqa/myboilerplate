@@ -28,7 +28,10 @@ module.exports = {
             Todo: 'app/components/Todo.jsx',
             TodoSearch:'app/components/TodoSearch.jsx',
             AddTodo:'app/components/AddTodo.jsx',
-            applicationStyles:'app/styles/app.scss'
+            applicationStyles:'app/styles/app.scss',
+            actions:'app/actions/actions.jsx',
+            reducers:'app/reducers/reducers.jsx',
+            
         },
         modulesDirectories:[
           'node_modules',
