@@ -17,7 +17,7 @@ export var todoReducer = (state=[],action) => {
                 ...state,
                 {
                     id: uuid(),
-                    text:text,
+                    text:action.text,
                     status:false,
                     createdAt: moment().unix(),
                     completedAt: undefined
@@ -30,7 +30,7 @@ export var todoReducer = (state=[],action) => {
                     return {
                         ...todo,
                         status: nextCompleted,
-                        completedAt: nextCompleted ? moment.unix() : undefined;
+                        completedAt: nextCompleted ? moment.unix() : undefined
                     };
                 }
             });
@@ -39,7 +39,7 @@ export var todoReducer = (state=[],action) => {
     };
 };
 
-export var showCompletedReducer = {state=false, action} =>{
+export var showCompletedReducer = (state=false, action) =>{
     switch(action.type){
         case 'TOGGLE_SHOW_COMPLETED':
             return !state;
@@ -48,11 +48,3 @@ export var showCompletedReducer = {state=false, action} =>{
     };
 };
 
-export var showCompletedReducer = {state='', action} =>{
-    switch(action.type){
-        case 'TOGGLE_TODO':
-            return state;
-        default:
-            return state;
-    };
-};
