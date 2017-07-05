@@ -21,7 +21,7 @@ module.exports ={
     setTodos:function(todos){
          if($.isArray(todos)){
              //Convert object to string
-            localStorage.setItem('todos',JSON.stringify(todos));
+ localStorage.setItem('todos',JSON.stringify(todos));
              return todos;
         }
     },
@@ -29,6 +29,7 @@ module.exports ={
     filterTodos: function(todos, showCompleted, searchText){
         var filteredTodos = todos;
         //Filter by showCompleted
+        
         filteredTodos = filteredTodos.filter((todo) => {
             return !todo.status || showCompleted;
         });

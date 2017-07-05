@@ -8,44 +8,8 @@ var uuid = require('node-uuid');
 var TodoAPI = require('TodoAPI');
 var moment = require('moment');
 
-var TodoApp = React.createClass({
-    getInitialState:function(){
-      return {
-         showCompleted: false,
-         searchText: '',
-         todos: TodoAPI.getTodos()
-      };  
-    },
-    
-    componentDidUpdate:function(){
-      TodoAPI.setTodos(this.state.todos);  
-    },
-    
-//    handleAddTodo: function(text){
-//        this.setState({
-//            todos: [
-//                ...this.state.todos,
-//                {
-//                    id: uuid(),
-//                    text:text,
-//                    status:false,
-//                    createdAt: moment().unix(),
-//                    completedAt: undefined
-//                }
-//            ]
-//        });
-//    },
-    
-//    handleSearch: function(showCompleted, searchText){
-//      this.setState({
-//         showCompleted: showCompleted,
-//         searchText: searchText.toLowerCase()
-//      });  
-//    },
-    
+var TodoApp = React.createClass({    
     render: function(){
-        var {todos, showCompleted, searchText} = this.state;
-        var filterTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
         return(
             <div>
                 <h1 className='page-title'>Todo App</h1>  
