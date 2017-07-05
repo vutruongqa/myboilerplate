@@ -17,7 +17,7 @@ export var Search = React.createClass({
               </div>
                <div>
                       <label>
-                           <input type="checkbox" ref="showCompleted" checked={showCompleted} onChange={
+                           <input className="show-completed" type="checkbox" ref="showCompleted" checked={showCompleted} onChange={
                                   ()=>{
                                       dispatch(actions.toggleShowCompleted());
                                   }

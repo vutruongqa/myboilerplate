@@ -7,7 +7,7 @@
     
     p, input{
         margin: 0;
-        padding-left: 1rem;
+        padding-left: 0.5rem;
     }
     > :first_child{
          margin-right: 1rem;   
@@ -28,4 +28,8 @@
         color: $light-color;
         text-decoration: line-through;
     }
+}
+
+.show-completed{
+    margin-left: 8px;
 }

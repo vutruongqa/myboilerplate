@@ -23,11 +23,7 @@ module.exports = {
     resolve:{
         root: __dirname,
         alias:{
-            TodoApp: 'app/components/TodoApp.jsx',
-            TodoList: 'app/components/TodoList.jsx',
-            Todo: 'app/components/Todo.jsx',
-            TodoSearch:'app/components/TodoSearch.jsx',
-            AddTodo:'app/components/AddTodo.jsx',
+            app:'app',
             applicationStyles:'app/styles/app.scss',
             actions:'app/actions/actions.jsx',
             reducers:'app/reducers/reducers.jsx',
