@@ -45,8 +45,7 @@ export var addTodos = (todos)=> {
 //Asynchronous action
 export var startAddTodos = () => {
   return (dispatch, getState) => {
-      var todoRef = firebaseRef.child('todos');
-      
+      var todoRef = firebaseRef.child('todos'); 
         return todoRef.once('value').then((snapshot)=>{
           var todos = snapshot.val() || {};
           var parsedTodo = [];
@@ -88,5 +87,5 @@ export var startToggleTodo = (id, status) => {
          todoRef.update(updates).then(() => {
             dispatch(updateTodo(id, updates)); 
          });
-  };  
+    };  
 }

@@ -190,3 +190,7 @@ npm install redux@3.3.1 --save-dev
 -------------------------
 REACT-REDUX
 npm install react-redux@4.4.1 --save-dev
+
+------------------------------------------------------
+Config environment
+npm install --save node-env-file@0.1.8
