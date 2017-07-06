@@ -15,13 +15,7 @@ export var addTodo = (todo) => {
     };
 };
 
-export var addTodos = (todos)=> {
-    return{
-        type:'ADD_TODOS',
-        todos
-    };
-};
-
+//Asynchronous action when interacting with firebase
 export var startAddTodo = (text) => {
   return (dispatch, getState) => {
       var todo = {
@@ -29,7 +23,7 @@ export var startAddTodo = (text) => {
                     status:false,
                     createdAt: moment().unix(),
                     completedAt: null
-        };
+      };
       var todoRef = firebaseRef.child('todos').push(todo);
       
       return todoRef.then(()=>{
@@ -41,6 +35,33 @@ export var startAddTodo = (text) => {
   };  
 };
 
+export var addTodos = (todos)=> {
+    return{
+        type:'ADD_TODOS',
+        todos
+    };
+};
+
+//Asynchronous action
+export var startAddTodos = () => {
+  return (dispatch, getState) => {
+      var todoRef = firebaseRef.child('todos');
+      
+        return todoRef.once('value').then((snapshot)=>{
+          var todos = snapshot.val() || {};
+          var parsedTodo = [];
+          Object.keys(todos).forEach((todoId)=>{
+            parsedTodo.push({
+               id:todoId,
+                ...todos[todoId]
+            });   
+          }); 
+            
+          dispatch(addTodos(parsedTodo));    
+        });
+   };
+};  
+
 
 export var toggleShowCompleted = () =>{
     return {
@@ -48,9 +69,24 @@ export var toggleShowCompleted = () =>{
     };
 };
 
-export var toggleTodo = (id) =>{
+export var updateTodo = (id,updates) =>{
     return {
-        type:'TOGGLE_TODO',
-        id
+        type:'UPDATE_TODO',
+        id,
+        updates
     };
 };
+
+//Asynchronous action
+export var startToggleTodo = (id, status) => {
+    return (dispatch, getState) => {
+         var todoRef = firebaseRef.child(`todos/${id}`);
+         var updates = {
+             status,
+             completedAt: status ? moment().unix() : null
+         };
+         todoRef.update(updates).then(() => {
+            dispatch(updateTodo(id, updates)); 
+         });
+  };  
+}

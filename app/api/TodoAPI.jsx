@@ -1,31 +1,31 @@
 var $ = require('jquery');
 
 module.exports ={
-    getTodos:function(){
-        var stringTodos = localStorage.getItem('todos');
-        var todos = [];
-        //Convert string to object or array
-        try{
-            todos = JSON.parse(stringTodos);
-        }catch(e){
-            
-        }
-        if($.isArray(todos)){
-            return todos;
-        }
-        else{
-            return [];
-        }
-    },
-    
-    setTodos:function(todos){
-         if($.isArray(todos)){
-             //Convert object to string
- localStorage.setItem('todos',JSON.stringify(todos));
-             return todos;
-        }
-    },
-    
+//    getTodos:function(){
+//        var stringTodos = localStorage.getItem('todos');
+//        var todos = [];
+//        //Convert string to object or array
+//        try{
+//            todos = JSON.parse(stringTodos);
+//        }catch(e){
+//            
+//        }
+//        if($.isArray(todos)){
+//            return todos;
+//        }
+//        else{
+//            return [];
+//        }
+//    },
+//    
+//    setTodos:function(todos){
+//         if($.isArray(todos)){
+//             //Convert object to string
+// localStorage.setItem('todos',JSON.stringify(todos));
+//             return todos;
+//        }
+//    },
+//    
     filterTodos: function(todos, showCompleted, searchText){
         var filteredTodos = todos;
         
