@@ -24,7 +24,8 @@ export var startAddTodo = (text) => {
                     createdAt: moment().unix(),
                     completedAt: null
       };
-      var todoRef = firebaseRef.child('todos').push(todo);
+      var uid = getState().auth.uid;
+      var todoRef = firebaseRef.child(`users/${uid}/todos`).push(todo);
       
       return todoRef.then(()=>{
          dispatch(addTodo({
@@ -45,7 +46,8 @@ export var addTodos = (todos)=> {
 //Asynchronous action
 export var startAddTodos = () => {
   return (dispatch, getState) => {
-      var todoRef = firebaseRef.child('todos'); 
+      var uid = getState().auth.uid;
+      var todoRef = firebaseRef.child(`users/${uid}/todos`); 
         return todoRef.once('value').then((snapshot)=>{
           var todos = snapshot.val() || {};
           var parsedTodo = [];
@@ -79,7 +81,8 @@ export var updateTodo = (id,updates) =>{
 //Asynchronous action
 export var startToggleTodo = (id, status) => {
     return (dispatch, getState) => {
-         var todoRef = firebaseRef.child(`todos/${id}`);
+        var uid = getState().auth.uid;
+         var todoRef = firebaseRef.child(`users/${uid}/todos/${id}`);
          var updates = {
              status,
              completedAt: status ? moment().unix() : null
@@ -92,6 +95,14 @@ export var startToggleTodo = (id, status) => {
 
 //Login and Logout async action
 
+export var login =(uid) => {
+    return {
+        type:'LOGIN',
+        uid
+    };
+};
+
+
 export var startLogin = ()=>{
     return (dispatch, getState) => {
         firebase.auth().signInWithPopup(githubProvider).then((result)=>{
@@ -102,6 +113,12 @@ export var startLogin = ()=>{
     }
 };
 
+export var logout =() => {
+    return {
+        type:'LOGOUT',
+    };
+};
+
 export var startLogout = ()=>{
     return (dispatch, getState) => {
         firebase.auth().signOut().then(()=>{
@@ -109,3 +126,5 @@ export var startLogout = ()=>{
         });
     }
 };
+
+
